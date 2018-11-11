@@ -1,3 +1,4 @@
+/*base*/
 body {
   background: #fff;
 }
@@ -31,6 +32,7 @@ body {
 }
 
 
+/*app*/
 .todo-container {
   width: 600px;
   margin: 0 auto;
