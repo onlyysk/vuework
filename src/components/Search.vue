@@ -22,7 +22,6 @@
       search () {
         const searchName = this.searchName.trim()
         if(searchName) {
-          // 发布消息(搜索)
           PubSub.publish('search', searchName)
         }
       }

@@ -21,23 +21,20 @@
   export default {
     data () {
       return {
-        firstView: true, // 是否显示初始页
-        loading: false, // 是否正在请求中
-        users: [], // 用户列表数组数据
-        errorMsg: '', // 错误提示信息
+        firstView: true,
+        loading: false,
+        users: [],
+        errorMsg: '',
       }
     },
 
     mounted () {
-      // 订阅消息(search)
       PubSub.subscribe('search', async (msg, searchName) => {
-        // 更新状态数据(请求中)
         this.firstView = false
         this.loading = true
         this.users = []
         this.errorMsg = ''
 
-        // 使用axios发ajax请求
         const url = `https://api.github.com/search/users?q=${searchName}`
         try {
           const response = await axios.get(url)
@@ -48,11 +45,9 @@
             avatar_url: item.avatar_url
           }))
 
-          // 更新状态数据(成功)
           this.loading = false
           this.users = users
         } catch (error) {
-          // 更新状态(失败)
           this.loading = false
           this.errorMsg = '请求失败'
         }
